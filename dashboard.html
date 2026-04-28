@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="refresh" content="10">
+<title>Dashboard</title>
+<link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+
+<div class="container">
+
+
+<div style="display:flex; justify-content:space-between; align-items:center;">
+    <h1>Live Dashboard</h1>
+    <a href="/logout">
+        <button>Logout</button>
+    </a>
+</div>
+{% for row in data %}
+<div class="card">
+
+<p><b>ID:</b> {{ row[0] }}</p>
+<p><b>Name:</b> {{ row[1] }}</p>
+<p><b>Room:</b> {{ row[2] }}</p>
+<p><b>Type:</b> {{ row[3] }}</p>
+<p><b>Description:</b> {{ row[4] }}</p>
+<p><b>AI Result:</b> {{ row[5] }}</p>
+<p><b>Status:</b> {{ row[6] }}</p>
+
+<a href="/update_status/{{ row[0] }}/Responding">
+<button>Responding</button>
+</a>
+
+<a href="/update_status/{{ row[0] }}/Resolved">
+<button>Resolved</button>
+</a>
+
+
+</div>
+{% endfor %}
+
+</div>
+
+</body>
+</html>
